@@ -7,7 +7,7 @@ class AtualizarMorador
     {
 
 
-        $atualizar = (new MoradoresBanco())->AtualizarMorador($_POST['idMorador'], $_POST['cpfMorador'],$_POST['nomeMorador'],$_POST['idResidenciaMorador']);
+        $atualizar = (new MoradoresBanco())->AtualizarMorador($_POST['idMorador'], $_POST['nomeMorador'],$_POST['cpfMorador'],$_POST['idResidenciaMorador']);
 
 
 
@@ -21,7 +21,7 @@ class AtualizarMorador
         <button class="delete"></button>
            Morador atualizado!
     </div>
-    <a href="./index.php">Voltar! </a>';
+    <a href="./index.php?menu=moradoresAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
         echo $mensagem;
         }
 }

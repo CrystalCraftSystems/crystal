@@ -1,17 +1,35 @@
 <?php
 
-class Horarios{
-    
+class Horarios
+{
+
     public Visitantes $idVisitante;
-    public string $idRegistro;
-    public string $dataRegistro;
-    public string $horaEntrada;
-    public string $horaSaida;
-    public string $placaVeiculo;
+    private string $idRegistro;
+    private string $dataRegistro;
+    private string $horaEntrada;
+    private string $horaSaida;
+    private string $placaVeiculo;
 
+/*    public function setIdVisitante(Visitantes $idVisitante): void
+    {
+        $this->idVisitante = $idVisitante;
+    }
 
+    public function getIdVisitante()
+    {
+        return $this->idVisitante;
+    }
+    public function setVisitantes(string $idVisitante){
+    $this->visitantes[]= new Visitantes($idVisitante);
+   }
 
-    public function getIdRegistro():string
+   public function mostrarVisitantes(){
+    foreach($this-> visitantes as $k => $v){
+        $visitante= $k : {$v->getIdVisitante()};
+    }
+   }*/
+
+    public function getIdRegistro(): string
     {
         return $this->idRegistro;
     }
@@ -20,29 +38,29 @@ class Horarios{
     {
         $this->idRegistro = $idRegistro;
     }
- 
-    public function getDataRegistro():string
+
+    public function getDataRegistro(): string
     {
         return $this->dataRegistro;
     }
 
- 
+
     public function setDataRegistro(string $dataRegistro)
     {
         $this->dataRegistro = $dataRegistro;
     }
 
-    public function getHoraEntrada():string
+    public function getHoraEntrada(): string
     {
         return $this->horaEntrada;
     }
- 
+
     public function setHoraEntrada(string $horaEntrada)
     {
         $this->horaEntrada = $horaEntrada;
     }
 
-    public function getHoraSaida():string
+    public function getHoraSaida(): string
     {
         return $this->horaSaida;
     }
@@ -52,7 +70,7 @@ class Horarios{
         $this->horaSaida = $horaSaida;
     }
 
-    public function getPlacaVeiculo():string
+    public function getPlacaVeiculo(): string
     {
         return $this->placaVeiculo;
     }
@@ -62,5 +80,3 @@ class Horarios{
         $this->placaVeiculo = $placaVeiculo;
     }
 }
-
-?>

@@ -1,4 +1,4 @@
-<?php require __DIR__."/cabecalho.php"; ?>
+<?php require __DIR__ . "/cabecalho.php"; ?>
 
 <style>
     h1 {
@@ -8,7 +8,7 @@
 
 <section class="section">
     <div class="container">
-    <h1 class="title has-text-centered"><strong>Listagem de moradores<strong></h1><br>
+        <h1 class="title has-text-centered"><strong>Listagem de moradores<strong></h1><br>
         <table class="table is-fullwidth is-striped">
             <thead>
                 <tr>
@@ -16,20 +16,21 @@
                     <th>Nome</th>
                     <th>CPF</th>
                     <th>ID residência</th>
+                   
                 </tr>
             </thead>
             <tbody>
-          
+
                 <?php if (isset($moradores)): ?>
-                    
+
                     <?php foreach ($moradores as $morador): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($morador->getIdMorador()); ?></td>
-                            <td><?php echo htmlspecialchars($morador->getNomeMorador()); ?></td>
-                            <td><?php echo htmlspecialchars($morador->getCpfMorador()); ?></td>
-                            <td><?php echo htmlspecialchars($morador->getIdResidencia()); ?></td>
-                           
-                        
+
+                            <td><?php echo htmlspecialchars($morador['morador']); ?></td>
+                            <td><?php echo htmlspecialchars($morador['NOMEMORADOR']); ?></td>
+                            <td><?php echo htmlspecialchars($morador['CPFMORADOR']); ?></td>
+                            <td><?php echo htmlspecialchars($morador['IDRESIDENCIA']); ?></td>
+
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -40,4 +41,4 @@
             </tbody>
         </table>
     </div>
-<?php require __DIR__."/../../footer.php"; ?>
+    <?php require __DIR__ . "/../../footer.php"; ?>

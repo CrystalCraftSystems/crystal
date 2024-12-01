@@ -7,33 +7,32 @@
 </style>
 
 <div class="box">
-<h1 class="title has-text-centered"><strong>Cadastrar residências e blocos<strong></h1>
+<h1 class="title has-text-centered"><strong>Editar residências e blocos<strong></h1>
     <form action="./index.php?acao=atualizar-residencia" method="post">
     <div class="field">
 
-    <input class="input" type="hidden" name="idResidencia" value="<?= !empty($residencia) ? $residencia->getIdResidencia():''?>">
+    <input class="input" type="hidden" name="idResidencia" value= "<?= !empty($residencia) ? $residencia['IDRESIDENCIA']:''?>">
 
 <div class="field">
     <label class="label">Número da residência</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o número da residência" name="numResidencia" value= "<?= !empty($residencia) ? $residencia->getNumResidencia():''?>">
+        <input class="input" type="text" placeholder="Digite o número da residência" name="numResidencia" value= "<?= !empty($residencia) ? $residencia['NUMRESIDENCIA']:''?>">
     </div>
 </div>
 
 <div class="field">
     <label class="label">Bloco</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o bloco" name="bloco" value= "<?= !empty($residencia) ? $residencia->getBloco():''?>">
+        <input class="input" type="text" placeholder="Digite o bloco" name="bloco" value= "<?= !empty($residencia) ? $residencia['BLOCO']:''?>">
     </div>
 </div>
 
 <div class="field">
-    <label class="label">ID do morador</label>
+    <label class="label">Descrição da situação da residência</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o ID do morador" name="idMoradorResidencia" value= "<?= !empty($residencia) ? $residencia->getIdMorador():''?>">
+        <input class="input" type="text" placeholder="Digite a descrição da residência" name="descricaoResidencia" value="<?= !empty($residencia) ? $residencia['DESCRICAORESIDENCIA']:''?>">
     </div>
 </div>
-
 
 
 

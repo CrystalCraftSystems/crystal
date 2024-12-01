@@ -29,7 +29,7 @@
     <a class="has-text-white-bis" href="./index.php?menu=visitantesAdm">Visitantes</a>
     <a class="has-text-white-bis" href="./index.php?menu=moradoresAdm">Moradores</a>
     <a class="has-text-white-bis" href="./index.php?menu=residenciasAdm">Residências</a>
-    <a class="has-text-white-bis" href="/?atualizar-residencia?../../Administrador/Public/logout.php">Sair</a>
+    <a class="has-text-white-bis" href="./index.php?menu=logout">Sair</a>
 
 </nav>
 

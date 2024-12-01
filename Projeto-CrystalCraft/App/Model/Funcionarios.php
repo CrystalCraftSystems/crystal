@@ -1,11 +1,11 @@
 <?php
 class Funcionarios{
 
-    public string $idFuncionario;
-    public string $nomeFuncionario;
-    public string $cpfFuncionario;
-    public string $dataNascimentoFuncionario;
-    public string $funcaoFuncionario;
+    private string $idFuncionario;
+    private string $nomeFuncionario;
+    private string $cpfFuncionario;
+   private string $dataNascimentoFuncionario;
+    private string $funcaoFuncionario;
 
 
     public function getIdFuncionario():string

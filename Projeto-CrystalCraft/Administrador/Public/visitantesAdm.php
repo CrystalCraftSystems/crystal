@@ -1,8 +1,12 @@
-<?php require __DIR__ . "/cabecalhoAdm.php"; ?>
+<?php require __DIR__ . "/cabecalhoAdm.php";?>
 
 <style>
     h1 {
         font-family: 'Candara';
+    }
+
+    td{
+        text-align: center;
     }
 </style>
 
@@ -12,11 +16,11 @@
         <table class="table is-fullwidth is-striped">
             <thead>
                 <tr>
-                    <th>ID Visitante</th>
-                    <th>Nome</th>
+                <th>ID Visitante</th>
+                <th>Nome</th>
                     <th>Descrição</th>
-                    <th>ID Morador </th>
-                   
+                    <th>ID Morador visitado</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,13 +29,14 @@
                     
                     <?php foreach ($visitantes as $visitante): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($visitante->getIdVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getNomeVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getDescricaoVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($visitante->getIdMorador()); ?></td>
-                            
-                                <a class="button is-small is-info" href="./index.php?acao=editar-visitante&idVisitante=<?=$visitante->getIdVisitante()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir-visitante&idVisitante=<?=$visitante->getIdVisitante()?>">Excluir</a>
+
+                        <td><?php echo htmlspecialchars($visitante['visitante']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['NOMEVISITANTE']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['DESCRICAOVISITANTE']); ?></td>
+                        <td><?php echo htmlspecialchars($visitante['IDMORADOR']); ?></td>     
+                        <td>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-visitanteAdm&idVisitante=<?=$visitante['visitante']?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-visitanteAdm&idVisitante=<?=$visitante['visitante']?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -76,7 +81,7 @@
 <div class="field">
     <label class="label">ID do morador visitado</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o ID do morador visitado" name="idMoradorVisitante">
+        <input class="input" type="text" placeholder="Digite o ID do morador visitado" name="idMoradorVisitante" >
     </div>
 </div>
 

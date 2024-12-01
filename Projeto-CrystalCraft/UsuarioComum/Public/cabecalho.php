@@ -23,12 +23,12 @@
 
 <nav class='is-flex has-background-text is-justify-content-space-evenly p-2'>
 
-   <a class="has-text-white-bis" href="/inicio.php">Início</a>    
-    <a class="has-text-white-bis" href="/usuarios.php">Usuários</a>
-    <a class="has-text-white-bis" href="/funcionarios.php">Funcionários</a>
-    <a class="has-text-white-bis" href="/horarios.php">Horários</a>
-    <a class="has-text-white-bis" href="/visitantes.php">Visitantes</a>
-    <a class="has-text-white-bis" href="/moradores.php">Moradores</a>
-    <a class="has-text-white-bis" href="/residencias.php">Residências</a>
+   <a class="has-text-white-bis" href="./index.php?menu=inicio">Início</a>    
+    <a class="has-text-white-bis" href="./index.php?menu=funcionarios">Funcionários</a>
+    <a class="has-text-white-bis" href="./index.php?menu=horarios">Horários</a>
+    <a class="has-text-white-bis" href="./index.php?menu=visitantes">Visitantes</a>
+    <a class="has-text-white-bis" href="./index.php?menu=moradores">Moradores</a>
+    <a class="has-text-white-bis" href="./index.php?menu=residencias">Residências</a>
+    <a class="has-text-white-bis" href="./index.php?menu=logout">Sair</a>
 
 </nav>

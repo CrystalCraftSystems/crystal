@@ -2,7 +2,8 @@
 
 class ExcluirResidencia{
     public function retornar(){
-    $residencias = (new ResidenciasBanco())->excluirResidencia($_GET['idResidencia']);                   
+    $residencias = (new ResidenciasBanco())->excluirResidencia($_GET['idResidencia']); 
+                      
     if (empty($residencias)) {
         die("Não foi possível excluir a residência");
     }
@@ -12,7 +13,7 @@ class ExcluirResidencia{
     <button class="delete"></button>
         Residência excluída.
 </div>
-<a href="./index.php">Voltar! </a>';
+  <a href="./index.php?menu=residenciasAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
     echo $mensagem;
     }
 }

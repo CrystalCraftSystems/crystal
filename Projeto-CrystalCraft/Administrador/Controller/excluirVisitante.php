@@ -1,8 +1,9 @@
 <?php
 
-class ExcluirVisitante{
+class ExcluirVisitanteAdm{
     public function retornar(){
-    $visitantes = (new VisitantesBanco())->excluirVisitante($_GET['idVisitante']);                   
+    $visitantes = (new VisitantesBanco())->excluirVisitante($_GET['idVisitante']);        
+               
     if (empty($visitantes)) {
         die("Não foi possível excluir o visitante");
     }
@@ -12,7 +13,7 @@ class ExcluirVisitante{
     <button class="delete"></button>
         Visitante excluído.
 </div>
-<a href="./index.php">Voltar! </a>';
+<a href="./index.php?menu=visitantesAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
     echo $mensagem;
     }
 }

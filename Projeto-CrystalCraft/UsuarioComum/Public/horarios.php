@@ -1,4 +1,4 @@
-<?php require __DIR__."/cabecalho.php"; ?>
+<?php require __DIR__ . "/cabecalho.php"; ?>
 
 <style>
     h1 {
@@ -8,7 +8,7 @@
 
 <section class="section">
     <div class="container">
-    <h1 class="title has-text-centered"><strong>Listagem de horários de entrada e saída<strong></h1><br>
+        <h1 class="title has-text-centered"><strong>Listagem de horários de entrada e saída<strong></h1><br>
         <table class="table is-fullwidth is-striped">
             <thead>
                 <tr>
@@ -18,25 +18,29 @@
                     <th>Data do registro</th>
                     <th>Hora da entrada</th>
                     <th>Hora da saída</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-          
+
                 <?php if (isset($registros)): ?>
-                    
+
                     <?php foreach ($registros as $registro): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($registro->getIdVisitante()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getIdRegistro()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getPlacaVeiculo()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getDataRegistro()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getHoraEntrada()); ?></td>
-                            <td><?php echo htmlspecialchars($registro->getHoraSaida()); ?></td>
-                           
+                            
+                            <td><?php echo htmlspecialchars($registro['IDVISITANTE']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['IDREGISTRO']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['PLACAVEICULO']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['DATAREGISTRO']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['HORAENTRADA']); ?></td>
+                            <td><?php echo htmlspecialchars($registro['HORASAIDA']); ?></td>
+
                             <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar&idRegistro=<?=$usuario->getIdRegistro()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir&idRegistro=<?=$usuario->getIdRegistro()?>">Excluir</a>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-horario&idRegistro=<?= $registro['IDREGISTRO'] ?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-horario&idRegistro=<?= $registro['IDREGISTRO'] ?>">Excluir</a>
                             </td>
+
+
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -48,67 +52,67 @@
         </table>
     </div>
 
-<br>
-<br>
+    <br>
+    <br>
 
 
-<div class="box">
-<h1 class="title has-text-centered"><strong>Registrar horários de entrada e saída<strong></h1>
-    <form action="./index.php?acao=cad-horario" method="post">
-       
-    <div class="field">
-            <label class="label">ID do visitante</label>
-            <div class="control">
-                <input class="input" type="text" placeholder="Digite o ID do visitante" name="idVisitanteHorario">
+    <div class="box">
+        <h1 class="title has-text-centered"><strong>Registrar horários de entrada e saída<strong></h1>
+        <form action="./index.php?acao=cad-horario" method="post">
+
+            <div class="field">
+                <label class="label">ID do visitante</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Digite o ID do visitante" name="idVisitanteHorario">
+                </div>
             </div>
-        </div>
 
-        <div class="field">
-            <label class="label">ID do registro</label>
-            <div class="control">
-                <input class="input" type="text" placeholder="Digite o ID" name="idRegistro">
+            <div class="field">
+                <label class="label">ID do registro</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Digite o ID" name="idRegistro">
+                </div>
             </div>
-        </div>
 
-        <div class="field">
-            <label class="label">Placa do veículo</label>
-            <div class="control">
-                <input class="input" type="text" placeholder="Digite a placa do veículo" name="placaVeiculo">
+            <div class="field">
+                <label class="label">Placa do veículo</label>
+                <div class="control">
+                    <input class="input" type="text" placeholder="Digite a placa do veículo" name="placaVeiculo">
+                </div>
             </div>
-        </div>
 
-        <div class="field">
-            <label class="label">Data do registro</label>
-            <div class="control">
-                <input class="input" type="date" placeholder="Digite a data do registro" name="dataRegistro">
+            <div class="field">
+                <label class="label">Data do registro</label>
+                <div class="control">
+                    <input class="input" type="date" placeholder="Digite a data do registro" name="dataRegistro">
+                </div>
             </div>
-        </div>
 
-        <div class="field">
-            <label class="label">Horário de entrada</label>
-            <div class="control">
-                <input class="input" type="time" placeholder="Digite o horário da entrada" name="horaEntrada">
+            <div class="field">
+                <label class="label">Horário de entrada</label>
+                <div class="control">
+                    <input class="input" type="time" placeholder="Digite o horário da entrada" name="horaEntrada">
+                </div>
             </div>
-        </div>
 
-        <div class="field">
-            <label class="label">Horário saída</label>
-            <div class="control">
-                <input class="input" type="time" placeholder="Digite o horário da saída" name="horaSaida">
+            <div class="field">
+                <label class="label">Horário saída</label>
+                <div class="control">
+                    <input class="input" type="time" placeholder="Digite o horário da saída" name="horaSaida">
+                </div>
             </div>
-        </div>
 
 
 
             <br>
-       
 
-        <div class="field">
-            <div class="control">
-                <input type="submit" class="button is-black is-fullwidth" value="Confirmar">
+
+            <div class="field">
+                <div class="control">
+                    <input type="submit" class="button is-black is-fullwidth" value="Confirmar">
+                </div>
             </div>
-        </div>
-</div>
+    </div>
 
     </form>
-<?php require __DIR__."/../../footer.php"; ?>
+    <?php require __DIR__ . "/../../footer.php"; ?>

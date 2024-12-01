@@ -1,4 +1,4 @@
-<?php require __DIR__."/cabecalho.php"; ?>
+<?php require __DIR__ . "/cabecalho.php"; ?>
 
 <style>
     h1 {
@@ -8,28 +8,30 @@
 
 <section class="section">
     <div class="container">
-    <h1 class="title has-text-centered"><strong>Listagem de residências<strong></h1><br>
+        <h1 class="title has-text-centered"><strong>Listagem de residências<strong></h1><br>
         <table class="table is-fullwidth is-striped">
             <thead>
                 <tr>
                     <th>ID Residência</th>
                     <th>Número</th>
                     <th>Bloco</th>
-                    <th>ID Morador</th>
+                    <th>Descrição</th>
+                    
                 </tr>
             </thead>
             <tbody>
-          
+
                 <?php if (isset($residencias)): ?>
-                    
+
                     <?php foreach ($residencias as $residencia): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($residencia->getIdResidencia()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getNumResidencia()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getBloco()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getIdMorador()); ?></td>
-                        
-                            
+
+                            <td><?php echo htmlspecialchars($residencia['IDRESIDENCIA']); ?></td>
+                            <td><?php echo htmlspecialchars($residencia['NUMRESIDENCIA']); ?></td>
+                            <td><?php echo htmlspecialchars($residencia['BLOCO']); ?></td>
+                            <td><?php echo htmlspecialchars($residencia['DESCRICAORESIDENCIA']); ?>
+
+
                         </tr>
                     <?php endforeach; ?>
                 <?php else: ?>
@@ -41,4 +43,4 @@
         </table>
     </div>
 
-<?php require __DIR__."/../../footer.php"; ?>
+    <?php require __DIR__ . "/../../footer.php"; ?>

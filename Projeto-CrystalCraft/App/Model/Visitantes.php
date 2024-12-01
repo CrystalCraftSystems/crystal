@@ -3,10 +3,11 @@
 class Visitantes{
 
     public string $idVisitante;
-    public string $nomeVisitante;
-    public string $descricaoVisitante;
-    public Moradores $idMorador;
+    private string $nomeVisitante;
+    private string $descricaoVisitante;
+    public array $moradores = [];
 
+    
     public function getIdVisitante():string
     {
         return $this->idVisitante;
@@ -37,6 +38,17 @@ class Visitantes{
         $this->descricaoVisitante = $descricaoVisitante;
     }
 
+
+
+    public function getMoradores()
+    {
+        return $this->moradores;
+    }
+
+    public function setMoradores($moradores)
+    {
+        $this->moradores[] = $moradores;
+    }
 }
 
 ?>

@@ -8,7 +8,7 @@ class EditarMorador
 
     
         $morador = (new MoradoresBanco)->buscarPorIdMorador($_GET['idMorador']);
-        require __DIR__."/../Public/editarMorador.php";
+        require __DIR__."/../Public/editarMoradores.php";
 
         }
 }

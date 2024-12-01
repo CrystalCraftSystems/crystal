@@ -11,10 +11,11 @@ class HorariosBanco
         
     }
 
-
-      public function cadastrarHorario($idVisitante,$idRegistro, $dataRegistro, $horaEntrada, $horaSaida,$placaVeiculo){
-        $sql = "INSERT INTO horarios(idVisitante,idRegistro, dataRegistro, horaentrada, horasaida, placaveiculo) values (:v,:i,:d,:e,:s,:p)";
-  
+    public function cadastrarHorario($idVisitante,$idRegistro, $dataRegistro, $horaEntrada, $horaSaida,$placaVeiculo)
+    {
+   
+        $sql = "INSERT INTO horarios(idvisitante, idregistro, dataregistro, horaentrada, horasaida, placaveiculo) values (:v,:i,:d,:e,:s,:p)";
+        
         $originalDate = $dataRegistro;
         $dataRegistro = date("Y-m-d", strtotime($originalDate));
 
@@ -25,6 +26,7 @@ class HorariosBanco
         $horaSaida= date("H:i:s", strtotime($originalHoraS));
         
         $comando = $this->pdo->prepare($sql);
+      
         $comando->bindValue("v",$idVisitante);
         $comando->bindValue("i",$idRegistro);
         $comando->bindValue("d",$dataRegistro);
@@ -32,68 +34,33 @@ class HorariosBanco
         $comando->bindValue("s",$horaSaida );
         $comando->bindValue("p",$placaVeiculo);
   
-  
-       return $comando->execute();
-        }
 
-      public function hidratar($array)
-        {
-            $todos = [];
-    
-            foreach ($array as $valor) {
-                $horario = new Horarios();
-                //$horario->setIdVisitante($valor['IDVISITANTE']);
-                $horario->setIdRegistro($valor['IDREGISTRO']);
-                $horario->setDataRegistro($valor['DATAREGISTRO']);
-                $horario->setHoraEntrada($valor['HORAENTRADA']);
-                $horario->setHoraSaida($valor['HORASAIDA']);
-                $horario->setPlacaVeiculo($valor['PLACAVEICULO']);
-                
-    
-                $todos[] = $horario;
-            }
-            return $todos;
-        }
 
-        public function hidratarSomenteUm($array)
-        {
+        return $comando->execute();
+    }
+          public function ListarHorario()
+          {
+              $sql = "SELECT  * FROM horarios";
+      
+              $comando = $this->pdo->prepare($sql);
+              $comando->execute();
+           
+              return $comando->fetchAll();
         
-          $horario = new Horarios();
-          //$horario->setIdVisitante($array['IDVISITANTE']);
-          $horario->setIdRegistro($array['IDREGISTRO']);
-          $horario->setDataRegistro($array['DATAREGISTRO']);
-          $horario->setHoraEntrada($array['HORAENTRADA']);
-          $horario->setHoraSaida($array['HORASAIDA']);
-          $horario->setPlacaVeiculo($array['PLACAVEICULO']);
-          
-
-           return $horario;
-        }
-    
-
-        public function ListarHorario(){
-
-          $sql = "SELECT * FROM horarios";
-          $comando = $this->pdo->prepare($sql);
-          $comando->execute();
-          $todosHorarios = $comando->fetchAll(PDO::FETCH_ASSOC);
-          return $this->hidratar($todosHorarios) ;
-         
           }
 
-          public function buscarPorIdRegistro($idRegistro){
+        public function buscarPorIdRegistro($idRegistro)
+        {
             $sql = "SELECT * FROM horarios WHERE idRegistro=:i";
     
             $comando = $this->pdo->prepare($sql);
-            $comando->bindValue("i",$idRegistro);
+            $comando->bindValue("i", $idRegistro);
             $comando->execute();
-            $resultado = $comando->fetch(PDO::FETCH_ASSOC);
-    
-            return $this->hidratarSomenteUm($resultado);
+            return $comando->fetch(PDO::FETCH_ASSOC);
+          
         }
-
-        public function EditarHorario($idVisitante,$idRegistro, $dataRegistro, $horaEntrada, $horaSaida,$placaVeiculo){
-          $sql = "INSERT INTO horarios(idVisitante,idRegistro, dataRegistro, horaentrada, horasaida, placaveiculo) values (:v,:i,:d,:e,:s,:p)";
+        public function EditarHorario($idVisitante,$idRegistro, $dataRegistro, $horaEntrada, $horaSaida,$placaVeiculo)
+        {
 
           $originalDate = $dataRegistro;
           $dataRegistro = date("Y-m-d", strtotime($originalDate));
@@ -103,22 +70,27 @@ class HorariosBanco
   
           $originalHoraS = $horaSaida;
           $horaSaida= date("H:i:s", strtotime($originalHoraS));
-          
-          $comando = $this->pdo->prepare($sql);
-          $comando->bindValue("v",$idVisitante);
-          $comando->bindValue("i",$idRegistro);
-          $comando->bindValue("d",$dataRegistro);
-          $comando->bindValue("e",$horaEntrada);
-          $comando->bindValue("s",$horaSaida );
-          $comando->bindValue("p",$placaVeiculo);
+  
+           
+            $sql = "UPDATE horarios SET idvisitante= :idvisitante, dataregistro = :dataregistro, horaentrada = :horaentrada, horasaida=:horasaida, placaveiculo= :placaveiculo WHERE idregistro = :id";
+            $comando = $this->pdo->prepare($sql);
+            $comando->bindValue('dataregistro', $dataRegistro);
+            $comando->bindValue('horaentrada', $horaEntrada);
+            $comando->bindValue('horasaida', $horaSaida);
+            $comando->bindValue('placaveiculo', $placaVeiculo);
+            $comando->bindValue('id', $idRegistro);
+            $comando->bindValue('idvisitante', $idVisitante);
+        
+        
+            return $comando->execute();
+        }
+
       
-          return $comando->execute();
-      }
-      
-      public function AtualizarHorario($idVisitante,$idRegistro, $dataRegistro, $horaEntrada, $horaSaida,$placaVeiculo){
-          $sql = "UPDATE horarios set idvisitante = :v,  dataregistro=:d,  horaentrada = :e, horasaida = :s, placaveiculo = :p where idregistro=:i";
-      
-          $originalDate = $dataRegistro;
+     
+        public function AtualizarHorario($idVisitante,$idRegistro, $dataRegistro, $horaEntrada, $horaSaida,$placaVeiculo)
+      {
+
+        $originalDate = $dataRegistro;
         $dataRegistro = date("Y-m-d", strtotime($originalDate));
 
         $originalHoraE = $horaEntrada;
@@ -126,14 +98,18 @@ class HorariosBanco
 
         $originalHoraS = $horaSaida;
         $horaSaida= date("H:i:s", strtotime($originalHoraS));
-        
-        $comando = $this->pdo->prepare($sql);
-        $comando->bindValue("v",$idVisitante);
-        $comando->bindValue("i",$idRegistro);
-        $comando->bindValue("d",$dataRegistro);
-        $comando->bindValue("e",$horaEntrada);
-        $comando->bindValue("s",$horaSaida );
-        $comando->bindValue("p",$placaVeiculo);
+
+         
+          $sql = "UPDATE horarios SET idvisitante= :idvisitante, dataregistro = :dataregistro, horaentrada = :horaentrada, horasaida=:horasaida, placaveiculo= :placaveiculo WHERE idregistro = :id";
+          $comando = $this->pdo->prepare($sql);
+          $comando->bindValue('idvisitante', $idVisitante);
+          $comando->bindValue('dataregistro', $dataRegistro);
+          $comando->bindValue('horaentrada', $horaEntrada);
+          $comando->bindValue('horasaida', $horaSaida);
+          $comando->bindValue('placaveiculo', $placaVeiculo);
+          $comando->bindValue('id', $idRegistro);
+          
+      
       
           return $comando->execute();
       }

@@ -15,7 +15,8 @@
                     <th>ID Residência</th>
                     <th>Número</th>
                     <th>Bloco</th>
-                    <th>ID Morador</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,14 +25,14 @@
                     
                     <?php foreach ($residencias as $residencia): ?>
                         <tr>
-                            <td><?php echo htmlspecialchars($residencia->getIdResidencia()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getNumResidencia()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getBloco()); ?></td>
-                            <td><?php echo htmlspecialchars($residencia->getIdMorador()); ?></td>
-                        
+
+                            <td><?php echo htmlspecialchars($residencia['IDRESIDENCIA']); ?></td>
+                        <td><?php echo htmlspecialchars($residencia['NUMRESIDENCIA']); ?></td>
+                        <td><?php echo htmlspecialchars($residencia['BLOCO']); ?></td>
+                        </td> <td><?php echo htmlspecialchars($residencia['DESCRICAORESIDENCIA']); ?>                        
                             <td>
-                                <a class="button is-small is-info" href="./index.php?acao=editar-residencia&idResidencia=<?=$residencia->getIdResidencia()?>">Editar</a>
-                                <a class="button is-small is-danger" href="./index.php?acao=excluir-residencia&idResidencia=<?=$residencia->getIdResidencia()?>">Excluir</a>
+                                <a class="button is-small is-info" href="./index.php?acao=editar-residencia&idResidencia=<?=$residencia['IDRESIDENCIA']?>">Editar</a>
+                                <a class="button is-small is-danger" href="./index.php?acao=excluir-residencia&idResidencia=<?=$residencia['IDRESIDENCIA']?>">Excluir</a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -74,9 +75,9 @@
 </div>
 
 <div class="field">
-    <label class="label">ID do morador</label>
+    <label class="label">Descrição da situação da residência</label>
     <div class="control">
-        <input class="input" type="text" placeholder="Digite o ID do morador" name="idMoradorResidencia">
+        <input class="input" type="text" placeholder="Digite a situação da residência" name="descricaoResidencia">
     </div>
 </div>
     <br>

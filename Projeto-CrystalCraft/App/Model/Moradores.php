@@ -2,11 +2,12 @@
 
 class Moradores{
 
-    public string $idMorador;
-    public string $nomeMorador;
-    public string $cpfMorador;
-    public Residencias $idResidencia;
+    private string $idMorador;
+    private string $nomeMorador;
+    private string $cpfMorador;
+    public array $residencias = [];
     
+
  
     public function getidMorador():string
     {

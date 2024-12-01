@@ -53,11 +53,11 @@ class validarUsuario
         if ($user) {
            $_SESSION['login']=true;
            $_SESSION['adm'] = true;
-           require __DIR__."/../../Administrador/Public/usuariosAdm.php";
+           
         } else {
             $_SESSION['login']=true; // É uma variavel global inicializada pela sessão
             $_SESSION['adm'] = false;
-            require __DIR__."/../../UsuarioComum/Public/inicio.php";
+           
         }
 
     }

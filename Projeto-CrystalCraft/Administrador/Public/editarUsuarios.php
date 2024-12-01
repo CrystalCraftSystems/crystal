@@ -30,7 +30,7 @@
         <div class="field">
             <label class="label">Senha</label>
             <div class="control">
-                <input class="input" type="password" placeholder="Digite a senha do usuário" name="senha" value= "<?= !empty($usuario) ? $usuario->getSenha():''?>" required>
+                <input class="input" type="text" placeholder="Digite a senha do usuário" name="senha" value= "<?= !empty($usuario) ? $usuario->getSenha():''?>" required>
             </div>
         </div>
 

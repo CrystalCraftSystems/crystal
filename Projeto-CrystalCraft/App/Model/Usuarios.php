@@ -3,12 +3,12 @@
 class Usuarios
 {
 
-    public string $idUsuario;
-    public string $nomeUsuario;
-    public string $senha;
-    public string $emailUsuario;
-    public string $cpfUsuario;
-    public string $dataNascimentoUsuario;
+    private string $idUsuario;
+    private string $nomeUsuario;
+    private string $senha;
+    private string $emailUsuario;
+    private string $cpfUsuario;
+    private string $dataNascimentoUsuario;
     public bool $permissaoEspecial;
     
 

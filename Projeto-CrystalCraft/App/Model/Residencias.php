@@ -3,10 +3,12 @@
 class Residencias{
 
     public string $idResidencia;
-    public int $numResidencia;
-    public string $bloco;
-    public Moradores $idMorador;
+    private int $numResidencia;
+    private string $bloco;
+    private string $descricaoResidencia;
     
+
+  
 
     public function getIdResidencia():string
     {
@@ -36,6 +38,17 @@ class Residencias{
     public function setBloco(string $bloco)
     {
         $this->bloco = $bloco;
+    }
+
+    public function getDescricaoResidencia()
+    {
+        return $this->descricaoResidencia;
+    }
+ 
+    public function setDescricaoResidencia($descricaoResidencia)
+    {
+        $this->descricaoResidencia = $descricaoResidencia;
+
     }
 }
 

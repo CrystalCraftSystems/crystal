@@ -1,6 +1,6 @@
 <?php
 
-class ExcluirHorario{
+class ExcluirHorarioAdm{
     public function retornar(){
     $horarios = (new HorariosBanco())->excluirHorario($_GET['idRegistro']);                   
     if (empty($horarios)) {
@@ -12,7 +12,7 @@ class ExcluirHorario{
     <button class="delete"></button>
         Registro excluído.
 </div>
-<a href="./index.php">Voltar! </a>';
+    <a href="./index.php?menu=horariosAdm" class="button is-black is-rounded is-medium is-fullwidth">Voltar!</a>';
     echo $mensagem;
     }
 }
